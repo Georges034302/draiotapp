@@ -1,0 +1,62 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+client/node_modules
+client/.pnp
+client/.pnp.js
+
+# testing
+client/coverage
+
+# production
+client/build
+
+# misc
+client/.DS_Store
+client/.env.local
+client/.env.development.local
+client/.env.test.local
+client/.env.production.local
+
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
+
+
+
+# backend
+
+# compiled output
+api/dist
+api/node_modules
+
+# Logs
+api/logs
+api/*.log
+api/npm-debug.log*
+api/yarn-debug.log*
+api/yarn-error.log*
+api/lerna-debug.log*
+
+# OS
+api/.DS_Store
+
+# Tests
+api/coverage
+api/.nyc_output
+
+# IDEs and editors
+api/.idea
+api/.project
+api/.classpath
+api/.c9/
+api/*.launch
+api/.settings/
+api/*.sublime-workspace
+
+# IDE - VSCode
+api/.vscode/*
+api/!.vscode/settings.json
+api/!.vscode/tasks.json
+api/!.vscode/launch.json
+api/!.vscode/extensions.json
