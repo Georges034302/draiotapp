@@ -37,7 +37,7 @@ class MqttHandler {
           status: pirStatus,
         };
         PIR.update(
-          { username: 'joel1010' },
+          { username: 'Georges034302' },
           updateValuePIRData,
           { upsert: true },
           err => {
@@ -60,7 +60,7 @@ class MqttHandler {
             numbers,
           };
           Segment.update(
-            { username: 'joel1010' },
+            { username: 'Georges034302' },
             updateValueSegmentData,
             { upsert: true },
             err => {
@@ -77,7 +77,7 @@ class MqttHandler {
           status,
         };
         Segment.update(
-          { username: 'joel1010' },
+          { username: 'Georges034302' },
           updateValueSegment,
           { upsert: true },
           err => {
@@ -105,7 +105,7 @@ class MqttHandler {
         channels_client.trigger('motion-channel', 'motion-data-event', data);
         if (detectMotion) {
           PIR.create({
-            username: 'joel1010',
+            username: 'Georges034302',
             detected: true,
             status: true,
           });
@@ -120,7 +120,7 @@ class MqttHandler {
           numbers: numbersData,
         };
         Distance.update(
-          { username: 'joel1010' },
+          { username: 'Georges034302' },
           updateValueData,
           { upsert: true },
           err => {
@@ -151,7 +151,7 @@ class MqttHandler {
           status: statusBoolean,
         };
         Distance.update(
-          { username: 'joel1010' },
+          { username: 'Georges034302' },
           updateValue,
           { upsert: true },
           err => {

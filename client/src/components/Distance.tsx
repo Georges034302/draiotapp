@@ -2,7 +2,6 @@ import React from "react";
 import PusherClient from "../store/Pusher";
 import axios from "axios";
 // 'ultra-channel', 'ultra-data-event'
-
 const Distance = () => {
   const [data, setData] = React.useState("0");
 

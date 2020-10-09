@@ -20,26 +20,24 @@ const Login: React.FC<LoginProps> = props => {
 
 
   const login = e => {
-      e.preventDefault()
-      const loginData = {
-        username,
-        password
-      }
-      axios.post('/auth/login', {...loginData})
-      .then((res) => {
-            if(res.data.payload.token) {
-              User.save(res.data.payload.token)
+      // e.preventDefault()
+      // const loginData = {
+      //   username,
+      //   password
+      // }
+      // axios.post('/auth/login', {...loginData})
+      // .then((res) => {
+            //if(res.data.payload.token) {
+              User.save("Success") //User.save(res.data.payload.token)
               props.setAuth(true)
-            }
-      })
-      .catch(err => {
+           // }
+      // })
+      // .catch(err => {
 
-        NotificationManager.error('Username or password is incorrect')
-          console.log(err)
-      })
+      //   NotificationManager.error('Username or password is incorrect')
+      //     console.log(err)
+      // })
   }
-
-
 
   return (
     <div className="row mt-5">

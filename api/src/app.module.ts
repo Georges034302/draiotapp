@@ -12,7 +12,6 @@ import { LedModule } from './led/led.module';
 import { UltraModule } from './ultra/ultra.module';
 import { PirModule } from './pir/pir.module';
 
-import { PassportModule } from '@nestjs/passport';
 import { JWTStrategy } from './auth/jwt.strategy';
 
 @Module({

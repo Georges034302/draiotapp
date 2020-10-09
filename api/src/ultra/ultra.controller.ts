@@ -20,7 +20,7 @@ export class UltraController {
   @Get()
   getDataAndStatus(): any {
       try {
-        const data = Distance.findOne({username: 'joel1010'})
+        const data = Distance.findOne({username: 'Georges034302'})
         return data
       } catch {
         return [];
