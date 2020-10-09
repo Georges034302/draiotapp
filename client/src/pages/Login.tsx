@@ -41,7 +41,7 @@ const Login: React.FC<LoginProps> = props => {
 
   return (
     <div className="row mt-5">
-      <div className="col-md-6 offset-md-3 col-12 col-sm-12">
+      {/* <div className="col-md-6 offset-md-3 col-12 col-sm-12">
         <div className="card">
           <div className="card-body">
             <h4>Login to system</h4>
@@ -56,7 +56,7 @@ const Login: React.FC<LoginProps> = props => {
             </form>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
