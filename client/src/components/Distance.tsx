@@ -1,6 +1,7 @@
 import React from "react";
 import PusherClient from "../store/Pusher";
 import axios from "axios";
+import "./sensors.css";
 // 'ultra-channel', 'ultra-data-event'
 const Distance = () => {
   const [data, setData] = React.useState("0");
@@ -58,75 +59,33 @@ const Distance = () => {
       });
   };
 
-  return (
-    <div className="card">
-      <div className="card-body">
-        <h4 className="card-title">
-          <a>Distance</a>
-        </h4>
-
-        <h4 className="card-title">
-          <a>Data: {data}</a>
-        </h4>
-
-        <div className="dropdown">
-          <button
-            className="btn btn-info dropdown-toggle"
-            type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            {convert}
-          </button>
-          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a
-            onClick={() => {
-              setConvert('M')
-            }}
-            className="dropdown-item">
-              M
-            </a>
-            <a 
-               onClick={() => {
-                setConvert('CM')
-              }}
-            className="dropdown-item" >
-              CM
-            </a>
-        
-          </div>
-        </div>
-
-
-{/* ON OFF BTN */}
-        <button
-          onClick={() => {
-            sendDataLed("on");
-            setStatus(true)
-          }}
-          // className="btn btn-outline-blue"
-          className={`btn waves-effect waves-light ${btnStatus ? "btn-blue": "btn-outline-blue" }`}
-
-        >
-          On
-        </button>
-
-        <button
-          onClick={() => {
-            sendDataLed("off");
-            setStatus(false)
-            setData('0')
-
-          }}
-          className={`btn waves-effect waves-light ${!btnStatus ? "btn-blue": "btn-outline-blue" }`}
-        >
-          Off
-        </button>
-      </div>
-    </div>
+  return (    
+      <div className="card">
+        <div className="card-body">
+          <h4>Position Sensor  
+              <button onClick={() => {sendDataLed("on");setStatus(true) }} className={`btn btn-sm waves-effect waves-light float-right ${btnStatus ? "btn-blue": "btn-outline-blue" }`}>
+                On
+              </button>
+              <button onClick={() => {sendDataLed("off"); setStatus(false); setData('0')}}className={`btn btn-sm waves-effect waves-light float-right ${!btnStatus ? "btn-blue": "btn-outline-blue" }`}>
+                  Off
+              </button>
+          </h4>   
+        </div> 
+        <div className="card-body">          
+          <h5>Sensor Reading:
+          <button className={`btn btn-sm btn-outline-danger ${data}`} style={{ borderRadius: '45%' }}>--</button>                  
+          <span className="dropdown float-right"> Unit:
+              <button className="btn btn-info btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {convert}
+              </button>
+              <div className="dropdown-menu dropdown" aria-labelledby="dropdownMenuButton">
+                <a  onClick={() => {setConvert('M')}} className="dropdown-item"><small>M</small></a>
+                <a  onClick={() => {setConvert('CM')}} className="dropdown-item" ><small>CM</small></a>              
+              </div>                     
+            </span>   
+            </h5> 
+          </div>            
+      </div>    
   );
 };
-
 export default Distance;

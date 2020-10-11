@@ -87,73 +87,33 @@ const Segment: React.FC = () => {
   return (
     <div className="card">
       <div className="card-body">
-        <h4 className="card-title">
-          <a>Segment</a>
-        </h4>
-        <h4 className="card-title">
-          <a>Data: {data}</a>
-        </h4>
-        <button 
-        
-        className={`btn waves-effect waves-light ${btnStatus ? "btn-blue": "btn-outline-blue" }`}
-        
-        
-        onClick={() => {
-          toggleOnOff("on")
-          setStatus(true)
-        }
-        }
-        
-        >
+        <h4>
+          <a>Segment Sensor</a>
+          <button className={`btn btn-sm waves-effect waves-light float-right ${btnStatus ? "btn-blue" : "btn-outline-blue"}`} onClick={() => { toggleOnOff("on"); setStatus(true); }}>
           On
-        </button>
-
-        <button 
-          className={`btn waves-effect waves-light ${!btnStatus ? "btn-blue": "btn-outline-blue" }`}
-         
-          onClick={() => {
-            toggleOnOff("off")
-            setStatus(false)
-            setData('0000')
-          }
-          }
-         >
+          </button>
+          <button 
+          className={`btn btn-sm waves-effect waves-light float-right ${!btnStatus ? "btn-blue": "btn-outline-blue" }`} onClick={() => {toggleOnOff("off"); setStatus(false);setData('0000'); }}>
           Off
         </button>
-
-        <div className="mt-2">
-          <form
-            onSubmit={e => {
-              e.preventDefault();
-
-              displayNumbers(input);
-            }}
-          >
-            <div className="form-group">
-              <label>Display numbers</label>
-              <input
-                disabled={btnStatus ? false: true}
-                ref={inputRef}
-                // onBlur={() => validator.showMessageFor("numbers")}
-                name="numbers"
-                value={input}
-                onChange={e => setInput(e.target.value)}
-                className="form-control"
-              />
-              {validator.message("numbers", input, "required|numeric|max:4")}
-            </div>
-            <button
-              onClick={() => {
-                validator.showMessages();
-              }}
-              className="btn btn-outline-primary"
-              type="submit"
-            >
-              Submit
-            </button>
+        </h4>
+        </div>
+        <div className="card-body">
+          <form onSubmit={e => {e.preventDefault(); displayNumbers(input); }} className="form-inline">           
+              <h5>Input Number: &nbsp;
+              <input disabled={btnStatus ? false: true} ref={inputRef} name="numbers" value={input} onChange={e => setInput(e.target.value)} className="form-control"/>
+              {validator.message("numbers", input, "required|numeric|max:4")}            
+              <button onClick={() => {validator.showMessages();}} className="btn btn-sm btn-outline-primary" type="submit">
+                Submit
+              </button>
+            </h5>
           </form>
         </div>
-      </div>
+        <div className="card-body">
+          <h5>
+            Sensor Reading:<button className={`btn btn-sm btn-outline-danger ${data}`} style={{ borderRadius: '45%' }}>----</button> 
+          </h5>   
+        </div>      
     </div>
   );
 };

@@ -51,40 +51,27 @@ const Motion = () => {
   };
 
   return (
-    <div className="card">
-      <div className="card-body">
-        <h4 className="card-title">
-          <a>Motion</a>
-        </h4>
-
-        <h4 className="card-title">
-          {/* <a>Data: {data}</a> */}
-          <button
-           className={`btn ${detected ? "btn-danger": "btn-outline-danger" }`}
-          style={{ borderRadius: '45%' }}>o</button>
-        </h4>
-
-        <button
-          onClick={() => {
-            sendDataLed("on");
-            setStatus(true)
-          }}
-          className={`btn waves-effect waves-light ${btnStatus ? "btn-blue": "btn-outline-blue" }`}
-        >
-          On
-        </button>
-        <button
-          onClick={() => {
-            sendDataLed("off");
-            setStatus(false)
-            setDetected(false)
-          }}
-          className={`btn waves-effect waves-light ${!btnStatus ? "btn-blue": "btn-outline-blue" }`}
-        >
-          Off
-        </button>
+    
+      <div className="card">
+        <div className="card-body">
+            <h4>Motion Sensor 
+              <button onClick={() => { sendDataLed("on"); setStatus(true);}} className={`btn btn-sm waves-effect waves-light float-right ${btnStatus ? "btn-blue": "btn-outline-blue" }`}>
+                On
+              </button>
+              <button onClick={() => {sendDataLed("off"); setStatus(false); setDetected(false);}} className={`btn btn-sm waves-effect waves-light float-right ${!btnStatus ? "btn-blue": "btn-outline-blue" }`}>
+               Off
+              </button>    
+            </h4>
+        </div>
+        <div className="card-body">
+          <h5>Sensor Reading:
+                  <button
+                  className={`btn btn-sm ${detected ? "btn-danger": "btn-outline-danger" }`}
+                  style={{ borderRadius: '45%' }}>--</button>       
+          </h5>
+        </div>
       </div>
-    </div>
+    
   );
 };
 

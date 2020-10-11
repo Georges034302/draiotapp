@@ -3,7 +3,6 @@ import Segment from "../components/Segment";
 import LED from "../components/LED";
 import Motion from "../components/Motion";
 import Distance from "../components/Distance";
-// import Jumbo from "../components/Jumbo";
 import Authentication from "../hoc/Authentication";
 interface SensorProps {
   setAuth: any;
