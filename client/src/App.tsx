@@ -11,7 +11,7 @@ const App: React.FC = () => {
 
  
   return (
-    <React.Fragment>
+    <React.Fragment>      
       <Sensor />
       <NotificationContainer />
     </React.Fragment>
