@@ -8,7 +8,6 @@ interface SensorProps {
   
 }
 
-
 const Sensor: React.FC<SensorProps> = props => {
 
   return (
