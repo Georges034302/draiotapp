@@ -23,8 +23,7 @@ const Distance = () => {
             let meterValue: number = parseFloat(value)
             meterValue /= 100
           
-            // floatValue /= 100
-            setData(meterValue.toFixed(4))
+              setData(meterValue.toFixed(4))
 
           } else if (convert === 'CM'){
             setData(value)

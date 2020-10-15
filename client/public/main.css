@@ -51,3 +51,9 @@
                     padding-bottom: 1px;
                     margin-bottom: 4px;
                 }
+                
+                .img-thumbnail {
+                    width: 250px;
+                    height: 143px;
+                    border: none;
+                }

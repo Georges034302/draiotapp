@@ -1,0 +1,7 @@
+after every front end update:
+
+in the client terminal: npm run build
+
+then delete the api build folder
+
+cut the clint build folder and paste in the api folder

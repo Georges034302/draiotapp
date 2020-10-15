@@ -9,7 +9,7 @@ export class PirController {
   @Get()
   getStatus() {
     try {
-      const data = PIR.findOne({username: 'Georges034302'})
+      const data = PIR.findOne({username: 'admin'})
       return data;
     } catch {
       return [];

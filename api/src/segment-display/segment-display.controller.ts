@@ -10,7 +10,7 @@ export class SegmentDisplayController {
     @Get()
     getStatus(): any {
         try {
-            const data = Segment.findOne({username: 'Georges034302'})
+            const data = Segment.findOne({username: 'admin'})
             return data;
           } catch {
             return [];

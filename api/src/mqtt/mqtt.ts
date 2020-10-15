@@ -24,9 +24,8 @@ class MqttHandler {
 
   constructor() {
     this.mqttClient = null;
-    this.host = 'mqtt://soldier.cloudmqtt.com:17181';
-    this.username = 'wrcfatqb'; // mqtt credentials if these are needed to connect
-    this.password = 'UA25D7hSJZ1C';
+    //this.host = 'mqtt://soldier.cloudmqtt.com:17181';
+    this.host = 'mqtt://test.mosquitto.org:1883'; 
   }
 
   handleTopic = (topic, message): void => {
@@ -37,7 +36,7 @@ class MqttHandler {
           status: pirStatus,
         };
         PIR.update(
-          { username: 'Georges034302' },
+          { username: 'admin' },
           updateValuePIRData,
           { upsert: true },
           err => {
@@ -60,7 +59,7 @@ class MqttHandler {
             numbers,
           };
           Segment.update(
-            { username: 'Georges034302' },
+            { username: 'admin' },
             updateValueSegmentData,
             { upsert: true },
             err => {
@@ -77,7 +76,7 @@ class MqttHandler {
           status,
         };
         Segment.update(
-          { username: 'Georges034302' },
+          { username: 'admin' },
           updateValueSegment,
           { upsert: true },
           err => {
@@ -87,25 +86,13 @@ class MqttHandler {
 
         break;
 
-      // PIR
-
-      //   detected: {
-      //     type: Boolean,
-      //     required: true,
-      //     default: false,
-      // },
-      // status: {
-      //     type: Boolean,
-      //     required: true,
-      //     default: true,
-      // },
       case 'PIR/data':
         const data: string = message.toString();
         const detectMotion: boolean = data === 'DETECTED' ? true : false;
         channels_client.trigger('motion-channel', 'motion-data-event', data);
         if (detectMotion) {
           PIR.create({
-            username: 'Georges034302',
+            username: 'admin',
             detected: true,
             status: true,
           });
@@ -120,7 +107,7 @@ class MqttHandler {
           numbers: numbersData,
         };
         Distance.update(
-          { username: 'Georges034302' },
+          { username: 'admin' },
           updateValueData,
           { upsert: true },
           err => {
@@ -134,24 +121,12 @@ class MqttHandler {
         let statusBoolean: boolean = false;
 
         statusBoolean = true ? statusUltra === 'True' : false;
-        //   status: {
-        //     type: Boolean,
-        //     required: true,
-        // },
-        // numbers: {
-        //     type: Number,
-        //     required: true,
-        // },
-
-        // username: {
-        //     type: String,
-        //     required: true
-        // },
+        
         let updateValue = {
           status: statusBoolean,
         };
         Distance.update(
-          { username: 'Georges034302' },
+          { username: 'admin' },
           updateValue,
           { upsert: true },
           err => {
@@ -170,14 +145,11 @@ class MqttHandler {
     });
 
     // Mqtt error calback
-    this.mqttClient.on('error', err => {
-      // console.log(err);
-      // this.mqttClient.end();
+    this.mqttClient.on('error', err => {      
     });
 
     // Connection callback
-    this.mqttClient.on('connect', () => {
-      // console.log(`mqtt client connected`);
+    this.mqttClient.on('connect', () => {     
     });
 
     // // mqtt subscriptions for 7 Segment

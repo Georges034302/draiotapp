@@ -9,8 +9,8 @@ describe('Ultra Testing', function() {
             '#root > div.row.mt-5 > div > div > div > form > input:nth-child(4)';
         const submit =
             '#root > div.row.mt-5 > div > div > div > form > span > input';
-        cy.get(usernameSelector).type('Georges034302');
-        cy.get(passwordSelector).type('Darkside@666');
+        cy.get(usernameSelector).type('admin');
+        cy.get(passwordSelector).type('superuser');
         cy.get(submit).click();
         const dataPanel = '#root > div.container-fluid.mt-3 > div > button';
         cy.get(dataPanel).should('contain', 'Logout');
