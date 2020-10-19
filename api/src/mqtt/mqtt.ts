@@ -8,12 +8,19 @@ import PIR from '../model/pir';
 
 import * as Pusher from 'pusher';
 
+// let channels_client = new Pusher({
+//   appId: '873019',
+//   key: '13d42090d9298d2858ef',
+//   secret: '0fd1c82be5467bc4736c',
+//   cluster: 'ap4',
+//   encrypted: true,
+// });
 let channels_client = new Pusher({
-  appId: '873019',
-  key: '13d42090d9298d2858ef',
-  secret: '0fd1c82be5467bc4736c',
-  cluster: 'ap4',
-  encrypted: true,
+  appId: '1092714',
+  key: 'dda5b1ceac469b76f1ed',
+  secret: '96ada95f529dbaebbf42',
+  cluster: 'ap1',
+  encrypted: true
 });
 
 class MqttHandler {

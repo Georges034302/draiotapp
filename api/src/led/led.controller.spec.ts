@@ -8,23 +8,11 @@ describe('Led Controller', () => {
   let service: LedService
 
   beforeEach(async () => {
-
-    // service = new LedService();
-    // controller = new LedController(service);
-
     const module = await Test.createTestingModule({
       imports: [LedModule],
     }).compile();
 
-    controller = module.get<LedController>(LedController);
-
-
-
-    // const module: TestingModule = await Test.createTestingModule({
-    //   controllers: [LedController],
-    // }).compile();
-
-    // controller = module.get<LedController>(LedController);
+    controller = module.get<LedController>(LedController);    
   });
 
   it('should be defined', () => {
