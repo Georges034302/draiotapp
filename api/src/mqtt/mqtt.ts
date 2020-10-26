@@ -8,31 +8,31 @@ import PIR from '../model/pir';
 
 import * as Pusher from 'pusher';
 
-// let channels_client = new Pusher({
-//   appId: '873019',
-//   key: '13d42090d9298d2858ef',
-//   secret: '0fd1c82be5467bc4736c',
-//   cluster: 'ap4',
-//   encrypted: true,
-// });
 let channels_client = new Pusher({
-  appId: '1092714',
-  key: 'dda5b1ceac469b76f1ed',
-  secret: '96ada95f529dbaebbf42',
-  cluster: 'ap1',
-  encrypted: true
+  appId: '873019',
+  key: '13d42090d9298d2858ef',
+  secret: '0fd1c82be5467bc4736c',
+  cluster: 'ap4',
+  encrypted: true,
 });
+// let channels_client = new Pusher({
+//   appId: '1092714',
+//   key: 'dda5b1ceac469b76f1ed',
+//   secret: '96ada95f529dbaebbf42',
+//   cluster: 'ap1',
+//   encrypted: true
+// });
 
 class MqttHandler {
   mqttClient: any;
   host: any;
-  username: any; // mqtt credentials if these are needed to connect
-  password: any;
+  // username: any; // mqtt credentials if these are needed to connect
+  // password: any;
 
   constructor() {
     this.mqttClient = null;
-    //this.host = 'mqtt://soldier.cloudmqtt.com:17181';
-    this.host = 'mqtt://test.mosquitto.org:1883'; 
+    this.host = 'mqtt://soldier.cloudmqtt.com:17181';
+    //this.host = 'mqtt://test.mosquitto.org:1883'; 
   }
 
   handleTopic = (topic, message): void => {
@@ -54,11 +54,11 @@ class MqttHandler {
       // 7 Segment
       case 'data':
         const numbers: number = parseInt(message.toString());
-        channels_client.trigger(
-          'segment-channel',
-          'segment-data-event',
-          numbers,
-        );
+        // channels_client.trigger(
+        //   'segment-channel',
+        //   'segment-data-event',
+        //   numbers,
+        // );
 
         if (numbers) {
           const updateValueSegmentData = {
@@ -96,7 +96,7 @@ class MqttHandler {
       case 'PIR/data':
         const data: string = message.toString();
         const detectMotion: boolean = data === 'DETECTED' ? true : false;
-        channels_client.trigger('motion-channel', 'motion-data-event', data);
+        // channels_client.trigger('motion-channel', 'motion-data-event', data);
         if (detectMotion) {
           PIR.create({
             username: 'admin',
@@ -121,7 +121,7 @@ class MqttHandler {
             if (err) console.log(err);
           },
         );
-        channels_client.trigger('ultra-channel', 'ultra-data-event', dataUltra);
+        // channels_client.trigger('ultra-channel', 'ultra-data-event', dataUltra);
         break;
       case 'ULTRA/startup':
         const statusUltra: string = message.toString();
@@ -146,17 +146,20 @@ class MqttHandler {
 
   connect = (): void => {
     // Connect mqtt with credentials (in case of needed, otherwise we can omit 2nd param)
-    this.mqttClient = mqtt.connect(this.host, {
-      username: this.username,
-      password: this.password,
-    });
+    this.mqttClient = mqtt.connect(this.host);
+    //  {
+    //   // username: this.username,
+    //   // password: this.password,
+    // });
 
     // Mqtt error calback
-    this.mqttClient.on('error', err => {      
+    this.mqttClient.on('error', err => {     
+      console.log(err)
     });
 
     // Connection callback
     this.mqttClient.on('connect', () => {     
+      console.log("connection established")
     });
 
     // // mqtt subscriptions for 7 Segment
