@@ -1,0 +1,20 @@
+1 - Build client
+cd client
+npm run build
+
+2 - Cut the build folder from client and paste in api
+
+3 - Run the api
+cd api
+npm start
+
+4- Run the client
+cd client
+npm start
+
+
+### To update package.json dependencies:
+npx npm-check-updates -u
+npm install
+npm audit fix
+npm update
