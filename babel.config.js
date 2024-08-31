@@ -1,5 +1,10 @@
-// babel.config.js
-module.exports = {
+// babel.config.ts
+import type { ConfigAPI } from '@babel/core';
+
+export default function (api: ConfigAPI) {
+  api.cache(true);
+
+  return {
     presets: [
       '@babel/preset-env',
       '@babel/preset-react',
@@ -10,5 +15,4 @@ module.exports = {
       // other plugins
     ],
   };
-  
-  
+}
