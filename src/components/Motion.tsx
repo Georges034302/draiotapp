@@ -1,53 +1,53 @@
 import React from "react";
-import PusherClient from "../store/Pusher";
-import axios from "axios";
+// import PusherClient from "../store/Pusher";
+// import axios from "axios";
 const Motion = () => {
-  const [data, setData] = React.useState("0");
+  // const [data, setData] = React.useState("0");
   const [btnStatus, setStatus] = React.useState(false)
 
   const [detected, setDetected] = React.useState(false)
 
   React.useEffect(() => {
-    const pusher = PusherClient.pusherClient;
+    // const pusher = PusherClient.pusherClient;
 
-    const channel = pusher.subscribe("motion-channel");
-    channel.bind("motion-data-event", (data: any) => {
-      const response = data;
+    // const channel = pusher.subscribe("motion-channel");
+    // channel.bind("motion-data-event", (data: any) => {
+    //   const response = data;
 
-      if(response === "DETECTED") {
-        setDetected(true)
-        setData(response)
-      } else {
-        setDetected(false)
-        setData("None")
-      }
-      // setData(response);
-    });
+    //   if(response === "DETECTED") {
+    //     setDetected(true)
+    //     setData(response)
+    //   } else {
+    //     setDetected(false)
+    //     setData("None")
+    //   }
+    //   // setData(response);
+    // });
 
     fetchAPI()
     
   }, []);
 
   const fetchAPI = () => {
-    axios.get('/pir')
-    .then((res) => {
-      //setStatus(res.data.status)
-    })
-    .catch(err => console.log(err))
+    // axios.get('/pir')
+    // .then((res) => {
+    //   //setStatus(res.data.status)
+    // })
+    // .catch(err => console.log(err))
   }
 
   const sendDataLed = (operation: string) => {
     const formData = {
       operation
     };
-    axios
-      .post("pir", { ...formData })
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    // axios
+    //   .post("pir", { ...formData })
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
   };
 
   return (

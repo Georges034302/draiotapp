@@ -1,15 +1,15 @@
-export const KEY = "user:storage"
-export default class User {
-  static save(data: any) {
-    localStorage.setItem(KEY, JSON.stringify(data));
-  }
+// export const KEY = "user:storage"
+// export default class User {
+//   static save(data: any) {
+//     localStorage.setItem(KEY, JSON.stringify(data));
+//   }
 
-  static load(): string {
-    const data: string = localStorage.getItem(KEY) || '';
-    return data ;
-  }
+//   static load(): string {
+//     const data: string = localStorage.getItem(KEY) || '';
+//     return data ;
+//   }
 
-  static clear() {
-    localStorage.removeItem(KEY);
-  }
-}
+//   static clear() {
+//     localStorage.removeItem(KEY);
+//   }
+// }

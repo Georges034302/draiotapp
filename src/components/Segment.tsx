@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { NotificationManager } from "react-notifications";
 import SimpleReactValidator from "simple-react-validator";
-import PusherClient from "../store/Pusher";
+// import PusherClient from "../store/Pusher";
 
 // Initialize the validator
 const validator = new SimpleReactValidator();
 
 const Segment: React.FC = () => {
   const [input, setInput] = useState<string>("");
-  const [error, setError] = useState<boolean>(false);
+  // const [error, setError] = useState<boolean>(false);
   const [btnStatus, setStatus] = useState<boolean>(false);
   const [data, setData] = useState<string>("0000");
 
@@ -21,32 +21,32 @@ const Segment: React.FC = () => {
 
   // Effect to handle Pusher subscription
   useEffect(() => {
-    const pusher = PusherClient.pusherClient;
-    const channel = pusher.subscribe("segment-channel");
+    // const pusher = PusherClient.pusherClient;
+    // const channel = pusher.subscribe("segment-channel");
 
-    channel.bind("segment-data-event", (data: any) => {
-      const response = JSON.stringify(data);
-      if (data) {
-        setData(response);
-      }
-    });
+    // channel.bind("segment-data-event", (data: any) => {
+    //   const response = JSON.stringify(data);
+    //   if (data) {
+    //     setData(response);
+    //   }
+    // });
 
     // Cleanup the subscription on component unmount
     return () => {
-      pusher.unsubscribe("segment-channel");
+      // pusher.unsubscribe("segment-channel");
     };
   }, []);
 
   // Function to toggle the display
   const toggleOnOff = (operation: string) => {
-    axios
-      .post("/segment-display", { operation })
-      .then(() => {
-        NotificationManager.success("Success", "Sent");
-      })
-      .catch(() => {
-        NotificationManager.error("Error", "Something went wrong");
-      });
+    // axios
+    //   .post("/segment-display", { operation })
+    //   .then(() => {
+    //     NotificationManager.success("Success", "Sent");
+    //   })
+    //   .catch(() => {
+    //     NotificationManager.error("Error", "Something went wrong");
+    //   });
   };
 
   // Function to display numbers
@@ -60,32 +60,32 @@ const Segment: React.FC = () => {
     const url = "/segment-display/numbers";
     const submit = parseInt(numbers, 10);
 
-    axios
-      .post(url, { numbers: JSON.stringify(submit) })
-      .then(() => {
-        NotificationManager.success("Success", "Sent");
-      })
-      .catch(() => {
-        NotificationManager.error("Error", "Something went wrong");
-      })
-      .then(() => {
-        setInput("");
-        validator.hideMessages();
-        forceUpdate();
-      });
+    // axios
+    //   .post(url, { numbers: JSON.stringify(submit) })
+    //   .then(() => {
+    //     NotificationManager.success("Success", "Sent");
+    //   })
+    //   .catch(() => {
+    //     NotificationManager.error("Error", "Something went wrong");
+    //   })
+    //   .then(() => {
+    //     setInput("");
+    //     validator.hideMessages();
+    //     forceUpdate();
+    //   });
   };
 
   // Effect to fetch initial button status
-  useEffect(() => {
-    axios
-      .get("/segment-display")
-      .then((res) => {
-        //setStatus(res.data.status);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+  // useEffect(() => {
+  // //   axios
+  // //     .get("/segment-display")
+  // //     .then((res) => {
+  // //       //setStatus(res.data.status);
+  // //     })
+  // //     .catch((err) => {
+  // //       console.error(err);
+  // //     });
+  // // }, []);
 
   return (
     <div className="card">

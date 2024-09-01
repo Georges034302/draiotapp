@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
 const LEDColor = (props: { color: string; }) => {
 
 
@@ -10,16 +10,17 @@ const LEDColor = (props: { color: string; }) => {
 
     const formData = {
       color: props.color,
+      
       operation
     };
-    axios
-      .post("led", {...formData})
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  //   axios
+  //     .post("led", {...formData})
+  //     .then(res => {
+  //       console.log(res);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
   };
 
   return props.color ? (
