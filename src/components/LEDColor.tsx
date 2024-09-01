@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
-const LEDColor = props => {
+const LEDColor = (props: { color: string; }) => {
 
 
     // if the sensor is on or off
     const [btnStatus, setBtnStatus] = React.useState(false)
-  const sendDataLed = operation => {
+  const sendDataLed = (operation: string) => {
 
 
     const formData = {

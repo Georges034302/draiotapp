@@ -1,6 +1,6 @@
 export const KEY = "user:storage"
 export default class User {
-  static save(data) {
+  static save(data: any) {
     localStorage.setItem(KEY, JSON.stringify(data));
   }
 

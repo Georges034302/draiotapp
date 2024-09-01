@@ -1,7 +1,4 @@
-// babel.config.ts
-import type { ConfigAPI } from '@babel/core';
-
-export default function (api: ConfigAPI) {
+export default function (api) {
   api.cache(true);
 
   return {
@@ -15,4 +12,4 @@ export default function (api: ConfigAPI) {
       // other plugins
     ],
   };
-}
+};

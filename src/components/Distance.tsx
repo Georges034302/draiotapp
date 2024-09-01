@@ -14,7 +14,7 @@ const Distance = () => {
     const pusher = PusherClient.pusherClient;
 
     const channel = pusher.subscribe("ultra-channel");
-    channel.bind("ultra-data-event", data => {
+    channel.bind("ultra-data-event", (data: any) => {
       const response = JSON.stringify(data);
       try {
           let floatValue: number = parseFloat(response)
@@ -44,7 +44,7 @@ const Distance = () => {
     .catch(err => console.log(err))
   }, [])
 
-  const sendDataLed = operation => {
+  const sendDataLed = (operation: string) => {
     const formData = {
       operation
     };

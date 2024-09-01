@@ -11,7 +11,7 @@ const Motion = () => {
     const pusher = PusherClient.pusherClient;
 
     const channel = pusher.subscribe("motion-channel");
-    channel.bind("motion-data-event", data => {
+    channel.bind("motion-data-event", (data: any) => {
       const response = data;
 
       if(response === "DETECTED") {
@@ -36,7 +36,7 @@ const Motion = () => {
     .catch(err => console.log(err))
   }
 
-  const sendDataLed = operation => {
+  const sendDataLed = (operation: string) => {
     const formData = {
       operation
     };
